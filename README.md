@@ -90,10 +90,6 @@ A paleta de cores foi inspirada nos tons do cafe: marrom escuro, dourado e bege,
 
 <br><br>
 
-### Gestao de Usuarios
-
-<img src="https://via.placeholder.com/800x450/F5ECD7/2C1A0E?text=Substituir+pelo+print+dos+Usuarios" alt="Usuarios" width="100%" style="border-radius: 12px; border: 2px solid #EDD9B0;" />
-
 </div>
 
 > **Nota:** Substitua as imagens placeholder pelos prints reais da aplicacao.
