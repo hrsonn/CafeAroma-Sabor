@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque | Cafe Aroma e Sabor</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/components.css}">
+    <link rel="stylesheet" th:href="@{/css/forms.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/home}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C8872A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+                </svg>
+                <span class="logo-text">Cafe Aroma e Sabor</span>
+            </a>
+            <ul class="navbar-links">
+                <li><a th:href="@{/home}">Home</a></li>
+                <li><a th:href="@{/produto}">Produtos</a></li>
+                <li><a th:href="@{/estoque}" class="active">Estoque</a></li>
+                <li><a th:href="@{/login}" class="nav-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                    Sair
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div style="background-image: url('https://source.unsplash.com/1600x300/?coffee,stock,warehouse'); background-size: cover; background-position: center; border-radius: 24px; padding: 60px 40px; margin-bottom: 40px; position: relative;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(44,26,14,0.85), rgba(74,44,14,0.75)); border-radius: 24px;"></div>
+            <div style="position: relative; z-index: 1;">
+                <h2 style="font-family: var(--font-titulo); font-weight: 700; font-size: 2.8em; color: var(--branco); letter-spacing: 0.02em;">Controle de Estoque</h2>
+                <p style="font-family: var(--font-corpo); color: var(--bege-medio); opacity: 0.85;">Registre entradas e saidas de produtos</p>
+            </div>
+        </div>
+
+        <div th:if="${mensagem}" class="alert alert-success">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span th:text="${mensagem}"></span>
+        </div>
+        <div th:if="${erro}" class="alert alert-error">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span th:text="${erro}"></span>
+        </div>
+
+        <div class="card-grid" style="grid-template-columns: 1fr 1fr;">
+            <section class="panel">
+                <h2>Registrar Movimentacao</h2>
+                <form th:action="@{/estoque/movimentar}" th:object="${movimentacao}" method="post" style="margin-top: 24px;">
+                    <div class="form-group">
+                        <label for="produto">Produto</label>
+                        <select id="produto" th:field="*{produto.id}" required>
+                            <option value="">Selecione um produto</option>
+                            <option th:each="p : ${produtos}" th:value="${p.id}" th:text="${p.nome}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tipoMovimentacao">Tipo</label>
+                            <select id="tipoMovimentacao" th:field="*{tipoMovimentacao}" required>
+                                <option value="">Selecione o tipo</option>
+                                <option value="ENTRADA">Entrada</option>
+                                <option value="SAIDA">Saida</option>
+                            </select>
+                            <span class="error" th:if="${#fields.hasErrors('tipoMovimentacao')}" th:errors="*{tipoMovimentacao}"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantidade">Quantidade</label>
+                            <input type="number" min="1" id="quantidade" th:field="*{quantidade}" placeholder="0" required>
+                            <span class="error" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}"></span>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Registrar
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="panel">
+                <h2>Historico de Movimentacoes</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Produto</th>
+                                <th>Tipo</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="mov : ${movimentacoes}">
+                                <td th:text="${mov.dataMovimentacao}">01/01/2026</td>
+                                <td th:text="${mov.produto.nome}">Cafe</td>
+                                <td>
+                                    <span th:text="${mov.tipoMovimentacao}"
+                                          th:classappend="${mov.tipoMovimentacao == 'ENTRADA' ? 'badge badge-success' : 'badge badge-danger'}"></span>
+                                </td>
+                                <td th:text="${mov.quantidade}">0</td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(movimentacoes)}">
+                                <td colspan="4" style="text-align: center; padding: 48px 24px; color: var(--texto-suave); font-family: var(--font-corpo);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C8872A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto 12px;">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    </svg>
+                                    Nenhuma movimentacao registrada.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8872A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+                </svg>
+                <span>Cafe Aroma e Sabor</span>
+            </div>
+            <p>&copy; 2026 Cafe Aroma e Sabor &mdash; Todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>

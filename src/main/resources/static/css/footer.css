@@ -1,0 +1,37 @@
+.footer {
+    background: #1A0F07;
+    color: var(--bege-claro);
+    border-top: 2px solid var(--cafe-dourado);
+    padding: 36px 0;
+    margin-top: auto;
+    text-align: center;
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-titulo);
+    font-size: 1.15em;
+    color: var(--cafe-dourado);
+    font-weight: 600;
+}
+
+.footer-brand svg {
+    flex-shrink: 0;
+}
+
+.footer p {
+    font-family: var(--font-corpo);
+    font-size: 0.8em;
+    opacity: 0.7;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}

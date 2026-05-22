@@ -1,0 +1,113 @@
+.navbar {
+    background: rgba(28, 14, 6, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+    height: 75px;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.navbar-brand svg {
+    flex-shrink: 0;
+}
+
+.navbar-brand .logo-text {
+    font-family: var(--font-titulo);
+    font-weight: 700;
+    font-size: 1.5em;
+    color: var(--branco);
+    letter-spacing: 0.5px;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+}
+
+.navbar-links li + li {
+    margin-left: 2px;
+}
+
+.navbar-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-family: var(--font-corpo);
+    font-weight: 500;
+    font-size: 0.78em;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.navbar-links a:hover {
+    color: var(--cafe-dourado-soft);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.navbar-links a.active {
+    color: var(--cafe-dourado);
+}
+
+.navbar-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background: var(--cafe-dourado);
+    border-radius: 1px;
+}
+
+.navbar-links a.nav-btn {
+    border: 1.5px solid var(--cafe-dourado);
+    border-radius: 25px;
+    padding: 7px 20px;
+    color: var(--cafe-dourado);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.navbar-links a.nav-btn:hover {
+    background: var(--cafe-dourado);
+    color: var(--branco);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+    }
+    .navbar .container {
+        flex-direction: column;
+        height: auto;
+        padding: 14px 20px;
+        gap: 12px;
+    }
+    .navbar-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

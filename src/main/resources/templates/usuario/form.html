@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${usuario.id} != null ? 'Editar Usuario | Cafe Aroma e Sabor' : 'Cadastrar Usuario | Cafe Aroma e Sabor'">Cadastrar Usuario | Cafe Aroma e Sabor</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/components.css}">
+    <link rel="stylesheet" th:href="@{/css/forms.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/home}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C8872A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+                </svg>
+                <span class="logo-text">Cafe Aroma e Sabor</span>
+            </a>
+            <ul class="navbar-links">
+                <li><a th:href="@{/home}">Home</a></li>
+                <li><a th:href="@{/produto}">Produtos</a></li>
+                <li><a th:href="@{/estoque}">Estoque</a></li>
+                <li><a th:href="@{/usuario}" class="active">Usuarios</a></li>
+                <li><a th:href="@{/login}" class="nav-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                    Sair
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container page-form" style="min-height: auto; padding: 40px 0;">
+        <section>
+            <h2 th:text="${usuario.id} != null ? 'Editar Usuario' : 'Novo Usuario'">Novo Usuario</h2>
+            <form th:action="@{/usuario/salvar}" th:object="${usuario}" method="post" class="card-form">
+                <input type="hidden" th:if="${usuario.id} != null" th:field="*{id}">
+
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" th:field="*{nome}" placeholder="Ex: Maria Silva" required>
+                    <span class="error" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" th:field="*{email}" placeholder="Ex: maria@exemplo.com" required>
+                    <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" th:field="*{username}" placeholder="Ex: maria" required>
+                        <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" th:field="*{senha}" placeholder="Minimo 6 caracteres" required>
+                        <span class="error" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" th:field="*{ativo}" />
+                        <span>Usuario ativo</span>
+                    </label>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/>
+                        </svg>
+                        Salvar
+                    </button>
+                    <a th:href="@{/usuario}" class="button button-secondary">Cancelar</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8872A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+                </svg>
+                <span>Cafe Aroma e Sabor</span>
+            </div>
+            <p>&copy; 2026 Cafe Aroma e Sabor &mdash; Todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>

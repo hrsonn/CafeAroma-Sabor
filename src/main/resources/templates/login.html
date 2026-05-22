@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Cafe Aroma e Sabor</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/components.css}">
+    <link rel="stylesheet" th:href="@{/css/forms.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+</head>
+<body style="background-image: url('https://source.unsplash.com/1920x1080/?coffee,cafe,dark'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <div style="position: fixed; inset: 0; background: rgba(28, 14, 6, 0.7); z-index: 0;"></div>
+
+    <nav class="navbar" style="position: relative; z-index: 1;">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/login}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C8872A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+                </svg>
+                <span class="logo-text">Cafe Aroma e Sabor</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="container page-form" style="position: relative; z-index: 1;">
+        <section>
+            <div class="card-form" style="background: rgba(255, 255, 255, 0.97);">
+                <div style="text-align: center; margin-bottom: 16px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C8872A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+                    </svg>
+                </div>
+                <h2 style="font-size: 2em;">Bem-vindo de volta</h2>
+                <p style="font-family: var(--font-corpo); text-align: center; color: var(--texto-suave); font-size: 0.9em; margin-bottom: 8px;">Acesse sua conta para continuar</p>
+                <form th:action="@{/login}" method="post" style="margin-top: 24px;">
+                    <div class="form-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" id="username" name="username" placeholder="admin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" placeholder="senha123" required>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>
+                            </svg>
+                            Entrar
+                        </button>
+                    </div>
+                    <div class="form-message">
+                        <span th:if="${errorMessage}" th:text="${errorMessage}" style="color: var(--perigo);"></span>
+                        <span th:unless="${errorMessage}">Use usuario <strong>admin</strong> e senha <strong>senha123</strong>.</span>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" style="position: relative; z-index: 1;">
+        <div class="container">
+            <div class="footer-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8872A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+                </svg>
+                <span>Cafe Aroma e Sabor</span>
+            </div>
+            <p>Sistema de gestao de estoque &mdash; Todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>
