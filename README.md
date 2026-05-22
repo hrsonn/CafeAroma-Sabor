@@ -14,7 +14,7 @@
 
 <br>
 
-<img src="https://source.unsplash.com/1200x400/?coffee,cafe,espresso,beans" alt="Cafe Aroma e Sabor Banner" width="100%" style="border-radius: 16px;" />
+<img src="Frame 8.png" alt="Cafe Aroma e Sabor Banner" width="100%" style="border-radius: 16px;" />
 
 </div>
 
