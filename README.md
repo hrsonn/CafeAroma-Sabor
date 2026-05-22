@@ -14,7 +14,7 @@
 
 <br>
 
-<img src="Frame 8.png" alt="Cafe Aroma e Sabor Banner" width="100%" style="border-radius: 16px;" />
+<img src="Frame 8.svg" alt="Cafe Aroma e Sabor Banner" width="100%" style="width:200px;" />
 
 </div>
 
@@ -63,7 +63,6 @@ A paleta de cores foi inspirada nos tons do cafe: marrom escuro, dourado e bege,
 **Banco de Dados**
 
 [![MySQL](https://img.shields.io/badge/MySQL-%232C1A0E?style=for-the-badge&logo=mysql&logoColor=%23C8872A&labelColor=%232C1A0E&color=%234A2C0E)](https://www.mysql.com)
-[![H2](https://img.shields.io/badge/H2_Database-%232C1A0E?style=for-the-badge&logo=h2&logoColor=%23C8872A&labelColor=%232C1A0E&color=%234A2C0E)](https://www.h2database.com)
 
 </div>
 
