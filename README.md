@@ -72,21 +72,27 @@ A paleta de cores foi inspirada nos tons do cafe: marrom escuro, dourado e bege,
 
 <div align="center">
 
+### Login
+
+<img src="Login.png" alt="Dashboard" width="100%" style="border-radius: 12px; border: 2px solid #EDD9B0;" />
+
+<br><br>
+
 ### Dashboard
 
-<img src="https://via.placeholder.com/800x450/F5ECD7/2C1A0E?text=Substituir+pelo+print+do+Dashboard" alt="Dashboard" width="100%" style="border-radius: 12px; border: 2px solid #EDD9B0;" />
+<img src="Dashboard.png" alt="Dashboard" width="100%" style="border-radius: 12px; border: 2px solid #EDD9B0;" />
 
 <br><br>
 
 ### Listagem de Produtos
 
-<img src="https://via.placeholder.com/800x450/F5ECD7/2C1A0E?text=Substituir+pelo+print+da+Listagem+de+Produtos" alt="Listagem de Produtos" width="100%" style="border-radius: 12px; border: 2px solid #EDD9B0;" />
+<img src="listagem.png" alt="Listagem de Produtos" width="100%" style="border-radius: 12px; border: 2px solid #EDD9B0;" />
 
 <br><br>
 
 ### Controle de Estoque
 
-<img src="https://via.placeholder.com/800x450/F5ECD7/2C1A0E?text=Substituir+pelo+print+do+Estoque" alt="Estoque" width="100%" style="border-radius: 12px; border: 2px solid #EDD9B0;" />
+<img src="estoque.png" alt="Estoque" width="100%" style="border-radius: 12px; border: 2px solid #EDD9B0;" />
 
 <br><br>
 
