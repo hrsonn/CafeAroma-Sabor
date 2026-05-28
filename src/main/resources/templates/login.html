@@ -52,8 +52,8 @@
                         </button>
                     </div>
                     <div class="form-message">
-                        <span th:if="${errorMessage}" th:text="${errorMessage}" style="color: var(--perigo);"></span>
-                        <span th:unless="${errorMessage}">Use usuario <strong>admin</strong> e senha <strong>senha123</strong>.</span>
+                        <span th:if="${param.error}" style="color: var(--perigo);">Usuario ou senha invalidos.</span>
+                        <span th:if="${param.logout}" style="color: var(--sucesso-bg);">Voce saiu do sistema.</span>
                     </div>
                 </form>
             </div>
